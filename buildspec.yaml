@@ -19,6 +19,7 @@ steps:
   - type: Command
     name: "run the Pi example locally"
     command: |
+      top -b -n 1
       ./bin/run-example SparkPi
       
   
