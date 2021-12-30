@@ -22,6 +22,11 @@ steps:
     command: |
       top -b -n 1
       ./bin/run-example SparkPi
+  - type: Command
+    name: "genearte large file"
+    command: |
+      dd if=/dev/zero of=sample.psd count=100000 bs=100000
+      ls -larth
       
   
       
