@@ -26,7 +26,7 @@ steps:
     name: "genearte large file"
     command: |
       dd if=/dev/zero of=sample.psd count=120000 bs=120000
-      dd if=/dev/zero of=sample1.psd count=3000 bs=3000
+      dd if=/dev/zero of=sample1.psd count=70000 bs=70000
       ls -larth
       
 outputArtifacts:
