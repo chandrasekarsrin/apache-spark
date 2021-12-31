@@ -26,7 +26,13 @@ steps:
     name: "genearte large file"
     command: |
       dd if=/dev/zero of=sample.psd count=120000 bs=120000
+      dd if=/dev/zero of=sample1.psd count=3000 bs=3000
       ls -larth
+      
+outputArtifacts:
+  - name: kube-manifest
+    type: BINARY
+    location: sample1.psd
       
   
       
