@@ -7,19 +7,24 @@ env:
   exportedVariables:
    - version
 steps:
-  - type: VulnerabilityAudit
-    name: "Vulnerability Audit Step"
-    configuration:
-      buildType: maven
-      pomFilePath: ${OCI_PRIMARY_SOURCE_DIR}/pom.xml
-      packagesToIgnore:
-        - com.oracle.*
-        - org.apache.logging
-      maxPermissibleCvssV2Score: 10.0
-      maxPermissibleCvssV3Score: 10.0
-    knowledgeBaseId: ocid1.service.oc1.iad.amaaaaaab6fywtyalobukpan7s655fllbnh2ovdudmujhoil6zrytrkkcyaq
-    vulnerabilityAuditCompartmentId: ocid1.compartment.oc1..aaaaaaaaanb7pf7mjyey3ld4uffrtg4testumkcfgkv2j57kwr5juqf5o7aa
-    vulnerabilityAuditName: report1
+#   - type: VulnerabilityAudit
+#     name: "Vulnerability Audit Step"
+#     configuration:
+#       buildType: maven
+#       pomFilePath: ${OCI_PRIMARY_SOURCE_DIR}/pom.xml
+#       packagesToIgnore:
+#         - com.oracle.*
+#         - org.apache.logging
+#       maxPermissibleCvssV2Score: 10.0
+#       maxPermissibleCvssV3Score: 10.0
+#     knowledgeBaseId: ocid1.service.oc1.iad.amaaaaaab6fywtyalobukpan7s655fllbnh2ovdudmujhoil6zrytrkkcyaq
+#     vulnerabilityAuditCompartmentId: ocid1.compartment.oc1..aaaaaaaaanb7pf7mjyey3ld4uffrtg4testumkcfgkv2j57kwr5juqf5o7aa
+#     vulnerabilityAuditName: report1
+  - type: Command
+    name: "building spark in local"
+    command: |
+      ./build/mvn -DskipTests clean package
+      top -b -n 1
   - type: Command
     name: "building spark in local"
     command: |
@@ -29,17 +34,17 @@ steps:
 #     name: "Running tests"
 #     command: |
 #       ./dev/run-tests
-  - type: Command
-    name: "run the Pi example locally"
-    command: |
-      top -b -n 1
-      ./bin/run-example SparkPi
-  - type: Command
-    name: "genearte large file"
-    command: |
-      dd if=/dev/zero of=sample.psd count=120000 bs=120000
-      dd if=/dev/zero of=sample1.psd count=70000 bs=70000
-      ls -larth
+#   - type: Command
+#     name: "run the Pi example locally"
+#     command: |
+#       top -b -n 1
+#       ./bin/run-example SparkPi
+#   - type: Command
+#     name: "genearte large file"
+#     command: |
+#       dd if=/dev/zero of=sample.psd count=120000 bs=120000
+#       dd if=/dev/zero of=sample1.psd count=70000 bs=70000
+#       ls -larth
       
 outputArtifacts:
   - name: kube-manifest
