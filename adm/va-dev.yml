@@ -23,11 +23,15 @@ steps:
   - type: Command
     name: "building spark in local"
     command: |
+      ls -lart /root/.m2
       mvn clean install
+      ls -lart /root/.m2
   - type: Command
     name: "building spark in local"
     command: |
+      ls -lart /root/.m2
       mvn clean install
+      ls -lart /root/.m2
       top -b -n 1
 #   - type: Command
 #     name: "Running tests"
@@ -45,7 +49,7 @@ steps:
 #       dd if=/dev/zero of=sample1.psd count=70000 bs=70000
 #       ls -larth
       
-outputArtifacts:
-  - name: kube-manifest
-    type: BINARY
-    location: sample1.psd
+# outputArtifacts:
+#   - name: kube-manifest
+#     type: BINARY
+#     location: sample1.psd
