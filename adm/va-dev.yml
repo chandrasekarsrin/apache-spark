@@ -24,13 +24,13 @@ steps:
     name: "building spark in local"
     command: |
       ls -lart /root/.m2/repository
-      mvn clean install
+      mvn clean install -DskipTests=true
       ls -lart /root/.m2/repository
   - type: Command
     name: "building spark in local"
     command: |
       ls -lart /root/.m2/repository
-      mvn clean install
+      mvn clean install -DskipTests=true
       ls -lart /root/.m2/repository
       top -b -n 1
 #   - type: Command
