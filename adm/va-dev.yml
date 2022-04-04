@@ -23,7 +23,7 @@ steps:
   - type: Command
     name: "building spark in local"
     command: |
-      mvn clean install -DskipTests=true
+      ./build/mvn -DskipTests clean package
 #   - type: Command
 #     name: "building spark in local"
 #     command: |
